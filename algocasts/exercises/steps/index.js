@@ -32,19 +32,38 @@
 // }
 
 // Attempt #2
-function steps(n) {
-  let out = '';
-  for (let i = 0; i < n; i++) {
-    for (let j = 0; j < n; j++) {
-      if (j <= i) {
-        out += '#';
-      } else {
-        out += ' ';
-      }
-    }
-    console.log(out);
-    out = '';
+// function steps(n) {
+//   let out = '';
+//   for (let i = 0; i < n; i++) {
+//     for (let j = 0; j < n; j++) {
+//       if (j <= i) {
+//         out += '#';
+//       } else {
+//         out += ' ';
+//       }
+//     }
+//     console.log(out);
+//     out = '';
+//   }
+// }
+
+// Attempt #3
+function steps(n, row = 0, stair = '') {
+  if (n === row) {
+    return;
   }
+
+  if (n === stair.length) {
+    console.log(stair);
+    return steps(n, row + 1);
+  }
+
+  if (stair.length <= row) {
+    stair += '#';
+  } else {
+    stair += ' ';
+  }
+  steps(n, row, stair);
 }
 
 
