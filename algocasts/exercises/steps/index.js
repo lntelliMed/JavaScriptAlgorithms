@@ -17,6 +17,35 @@
 //       '### '
 //       '####'
 
-function steps(n) {}
+// Attempt #1
+// function steps(n) {
+//   let out = new Array(n);
+//   out.fill(' ');
+
+//   for (let i = 0; i < n; i++){
+//     for (let j = 0; j <= i; j++) {
+//       out[j] = '#';
+//     }
+//     console.log(out.join(''));
+//     out.fill(' ');
+//   }
+// }
+
+// Attempt #2
+function steps(n) {
+  let out = '';
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      if (j <= i) {
+        out += '#';
+      } else {
+        out += ' ';
+      }
+    }
+    console.log(out);
+    out = '';
+  }
+}
+
 
 module.exports = steps;
