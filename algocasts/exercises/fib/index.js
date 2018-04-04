@@ -9,14 +9,14 @@
 //   fib(4) === 3
 
 // Attempt #1
-function fib(n) {
-  let arr = [0, 1];
-  for (let i = 2; i <= n; i++) {
-    arr.push(arr[i - 1] + arr[i - 2]);
-  }
+// function fib(n) {
+//   let arr = [0, 1];
+//   for (let i = 2; i <= n; i++) {
+//     arr.push(arr[i - 1] + arr[i - 2]);
+//   }
 
-  return arr[n];
-}
+//   return arr[n];
+// }
 
 // Attempt #2
 // function fib(n) {
@@ -34,8 +34,8 @@ function fib(n) {
 
 // Attempt #3
 // function fib(n) {
-//   if (n <= 2) {
-//     return 1;
+//   if (n < 2) {
+//     return n;
 //   }
 
 //   return fib(n - 1) + fib(n - 2);
@@ -43,26 +43,43 @@ function fib(n) {
 
 // Attempt #4
 // function fib(n, cache = {}) {
-//   if (n <= 2) {
-//     return 1;
+//   if (n < 2) {
+//     return n;
 //   }
 
-//   let first;
-//   let second;
-
-//   if (cache[n - 1]) {
-//     first = cache[n - 1];
-//   } else {
-//     first = fib(n - 1);
+//   if (cache[n]) {
+//     return cache[n];
 //   }
 
-//   if (cache[n - 2]) {
-//     second = cache[n - 2];
-//   } else {
-//     second = fib(n - 2);
-//   }
+//   let first = cache[n - 1] || fib(n - 1, cache);
+//   let second = cache[n - 2] || fib(n - 2, cache);
 
-//   return first + second;
+//   cache[n] = first + second;
+//   return cache[n];
 // }
+
+
+// Attempt #5
+function slowFib(n){
+  if (n < 2) {
+    return n;
+  }
+
+  return fib(n - 1) + fib(n - 2);
+}
+
+function memoize(fn) {
+  const memo = {};
+  return function(...args) {
+    if(memo[args]) {
+      return memo[args];
+    }
+
+    memo[args] = fn.apply(this, args);
+    return memo[args];
+  }
+}
+
+const fib = memoize(slowFib);
 
 module.exports = fib;
