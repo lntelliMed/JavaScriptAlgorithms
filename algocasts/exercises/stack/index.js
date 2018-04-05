@@ -10,6 +10,54 @@
 //   s.pop(); // returns 2
 //   s.pop(); // returns 1
 
-class Stack {}
+// Attempt #1
+/* class Stack {
+  constructor () {
+    this.stack = [];
+  }
 
+  push (val) {
+    this.stack.push(val);
+  }
+
+  pop () {
+    // if (!this.stack.length) {
+    //   return;
+    // }
+    return this.stack.pop();
+  }
+
+  peek() {
+    // if (!this.stack.length) {
+    //   return;
+    // }
+    return this.stack[this.stack.length - 1];
+  }
+} */
+
+
+// Attempt #1
+class Stack {
+  constructor() {
+    this.stack = [];
+  }
+
+  push(val) {
+    this.stack.unshift(val);
+  }
+
+  pop() {
+    // if (!this.stack.length) {
+    //   return;
+    // }
+    return this.stack.shift();
+  }
+
+  peek() {
+    // if (!this.stack.length) {
+    //   return;
+    // }
+    return this.stack[0];
+  }
+}
 module.exports = Stack;
