@@ -53,6 +53,74 @@ class LinkedList {
     }
     this.head = this.head.next;
   }
+
+  // Attempt #1
+  // removeLast () {
+  //   if (!this.head) {
+  //     return;
+  //   }
+  //   if (!this.head.next) {
+  //     this.head = null;
+  //     return;
+  //   }
+  //   let current = this.head;
+  //   let prev = null;
+  //   while (current) {
+  //     if (!current.next) {
+  //       break;
+  //     }
+  //     prev = current;
+  //     current = current.next;
+  //   }
+  //   prev.next = null;
+  // }
+
+  // Attempt #2
+//   removeLast() {
+//     if (!this.head) {
+//       return;
+//     }
+//     if (!this.head.next) {
+//       this.head = null;
+//       return;
+//     }
+
+//     let prevNode = this.head;
+//     let currentNode = this.head;
+//     let nextNode = currentNode.next;
+// /*
+// a -> b -> null
+// |    |    |
+// prev cur  next
+// */
+//     while (nextNode) {
+//       prevNode = currentNode;
+//       currentNode = currentNode.next;
+//       nextNode = nextNode.next;
+//     }
+//     prevNode.next = null;
+
+//   }
+
+  // Attempt #3
+   removeLast() {
+    if (!this.head) return;
+    if (!this.head.next) {
+      this.head = null;
+      return;
+    }
+
+    let prev = this.head;
+    let curr = this.head.next;
+
+    while (curr.next) {
+      prev = prev.next;
+      curr = curr.next;
+    }
+
+    prev.next = null;
+   }
+
 }
 
 module.exports = { Node, LinkedList };
