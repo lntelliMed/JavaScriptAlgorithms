@@ -12,24 +12,9 @@ class Node {
 class LinkedList {
   constructor () {
     this.head = null;
-    // this.tail = null;
-    // this.nodeCounts = 0;
   }
   insertFirst(val) {
-    // const nextNode = this.head;
-    // const newNode = new Node(val, this.head);
     this.head = new Node(val, this.head);
-    // this.head.next = nextNode;
-    // this.nodeCounts++;
-    // if (!this.head) {
-    //   this.head = newNode;
-      // this.tail = newNode;
-    // } else {
-      // const nextNode = this.head;
-      // this.tail = nextNode;
-    //   this.head = newNode;
-    //   this.head.next = nextNode;
-    // }
   }
   size () {
     let current = this.head;
@@ -50,22 +35,23 @@ class LinkedList {
       return null;
     }
     let current = this.head;
-    // while (current.next) {
-    //   current = current.next;
-    // }
-    // return current;
     while (current) {
       if (!current.next) {
         return current;
       }
       current = current.next;
     }
-    // return current;
   }
 
   clear () {
-    // this.nodeCounts = 0;
     this.head = null;
+  }
+
+  removeFirst () {
+    if (!this.head) {
+      return;
+    }
+    this.head = this.head.next;
   }
 }
 
