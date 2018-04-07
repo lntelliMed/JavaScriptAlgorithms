@@ -139,9 +139,19 @@ class LinkedList {
   }
 
   forEach(fn) {
+    let counter = 0;
     let current = this.head;
     while (current) {
-      fn(current);
+      fn(current, counter);
+      current = current.next;
+      counter++;
+    }
+  }
+
+  *[Symbol.iterator] () {
+    let current = this.head;
+    while (current) {
+      yield current;
       current = current.next;
     }
   }
