@@ -51,6 +51,15 @@ class Tree {
     }
   }
 
+  traverseDF (fn) {
+    const stack = [this.root];
+    while (stack.length) {
+      const current = stack.shift();
+      stack.unshift(...current.children);
+      fn(current);
+    }
+  }
+
 }
 
 module.exports = { Tree, Node };
